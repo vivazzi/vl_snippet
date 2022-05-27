@@ -1,0 +1,12 @@
+{% if instance.tag_id or instance.tag_classes %}<div{% if instance.tag_id %} id="{{ instance.tag_id }}"{% endif %}{% if instance.tag_classes %} class="{{ instance.tag_classes }}"{% endif %}>{% endif %}
+{% if instance.is_video %}
+    {% load sekizai_tags static %}
+    {% addtoblock 'css' %}<link rel="stylesheet" href="{% static 'vl_snippet/snippet.css' %}">{% endaddtoblock %}
+    <div class="video">
+        <iframe src="{{ instance.reformed_content|safe }}?rel=0" allowfullscreen></iframe>
+    </div>
+{% else %}
+    {{ instance.reformed_content|safe }}
+{% endif %}
+{% if instance.child_plugin_instances %}{% load cms_tags %}{% for plugin in instance.child_plugin_instances %}{% render_plugin plugin %}{% endfor %}{% endif %}
+{% if instance.tag_id or instance.tag_classes %}</div>{% endif %}
