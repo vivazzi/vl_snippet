@@ -1,0 +1,6 @@
+include AUTHORS
+include LICENSE
+include README.md
+recursive-include vl_snippet/locale *
+recursive-include vl_snippet/static *
+recursive-include vl_snippet/templates *
